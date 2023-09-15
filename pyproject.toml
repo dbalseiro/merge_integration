@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "merge-integration"
+version = "0.1.0"
+description = ""
+authors = ["Diego Balseiro <dbalseiro@stackbuiilders.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^2.3"
+pydantic = "<2"
+MergePythonClient = "^0.2.6"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
