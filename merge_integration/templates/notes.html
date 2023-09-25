@@ -1,0 +1,14 @@
+<ul>
+  {% for note in notes %}
+  <li>{{ note | safe }}</li>
+  {% endfor %}
+</ul>
+<form class="row g-2" action="/new-note" method="post">
+  <div class="col-auto">
+    <input type="hidden" name="cid" value="{{ cid }}">
+    <input type="text" class="form-control" name="note">
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Add Note</button>
+  </div>
+</form>
