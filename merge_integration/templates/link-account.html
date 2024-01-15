@@ -1,0 +1,21 @@
+<div>
+  <script type="text/javascript">
+    function saveAccountToken(public_token) {
+      window.location("/save-account-token?public-token={public_token}");
+    }
+
+    MergeLink.initialize({
+      // Replace ADD_GENERATED_LINK_TOKEN with the token retrieved from your backend (Step 1)
+      linkToken: "{{ token }}",
+      onSuccess: saveAccountToken,
+      onReady: MergeLink.openLink,
+      // A value of `true` for `shouldSendTokenOnSuccessfulLink` makes Link call `onSuccess`
+      // immediately after an account has been successfully linked instead of after the user
+      // closes the Link modal.
+      shouldSendTokenOnSuccessfulLink: true,
+      // tenantConfig: {
+      // apiBaseURL: "https://api-eu.merge.dev" /* OR your specified single tenant API base URL */
+      // },
+    });
+  </script>
+</div>

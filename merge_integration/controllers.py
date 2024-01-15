@@ -1,9 +1,25 @@
-import pdb
+import uuid
 from typing import Optional
 from merge.resources.crm.types.note_request import NoteRequest
 from merge.resources.crm.types.paginated_contact_list import PaginatedContactList
-
+from merge.resources.crm.types import CategoriesEnum
 from merge.client import Merge
+
+
+def get_link_token(merge_client: Merge) -> str:
+    origin = uuid.uuid4()
+    ltok = merge_client.crm.link_token.create(
+        end_user_email_address="dbalseiro@stackbuilders.com",
+        end_user_organization_name="SB",
+        end_user_origin_id=str(origin),
+        categories=[CategoriesEnum.CRM],
+    )
+    return ltok.link_token
+
+
+def get_private_token(merge_client: Merge, public_token: str) -> str:
+    tok = merge_client.crm.account_token.retrieve(public_token)
+    return tok.account_token
 
 
 def get_all_notes_from_contact(merge_client: Merge, cid: Optional[str]) -> list[str]:

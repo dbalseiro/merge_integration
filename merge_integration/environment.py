@@ -14,3 +14,8 @@ def get_configuration_value(cfg: MergeCfg) -> str:
             raise Exception(f"{k} environment variable not found")
         case val:
             return val
+
+
+def save_token(token: str) -> None:
+    with open("token", "w") as f:
+        f.write(token)
